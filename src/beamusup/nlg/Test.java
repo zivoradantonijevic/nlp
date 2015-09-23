@@ -6,35 +6,32 @@ import simplenlg.lexicon.Lexicon;
 import simplenlg.realiser.english.Realiser;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
 public class Test {
-    public List<ArrayList<String>> getSubjects() {
-        List<ArrayList<String>> list = new ArrayList<>();
+    public List<Sentence> getSubjects() {
+        List<Sentence> list = new ArrayList<>();
 
-
+        Sentence wheel = new Sentence("car", "has", "10 wheels");
 
         list.add(wheel);
-
-
-        ArrayList wheel = new ArrayList();
-        wheel.add("wheel");
-        wheel.add("10");
-
         return list;
 
     }
 
-    public void testNlg(){
-        this.getSubjects();
+    public void testNlg() {
+        List<Sentence> subjects = this.getSubjects();
+        Iterator<Sentence> iterator = subjects.iterator();
+        String sentence = "";
 
-        Lexicon lexicon = Lexicon.getDefaultLexicon();
-        NLGFactory nlgFactory = new NLGFactory(lexicon);
-        Realiser realiser = new Realiser(lexicon);
+        while (iterator.hasNext()) {
+            Sentence tmp = iterator.next();
+            sentence += tmp;
+        }
 
-        NLGElement s1 = nlgFactory.createSentence("my dog is happy");
-        String output = realiser.realiseSentence(s1);
-        System.out.println(output);
+        System.out.println(sentence);
+
     }
 }
