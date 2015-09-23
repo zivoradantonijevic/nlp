@@ -5,14 +5,25 @@ import simplenlg.framework.NLGFactory;
 import simplenlg.lexicon.Lexicon;
 import simplenlg.realiser.english.Realiser;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Test {
-    public String[] getSubjects() {
-        String[] options = new String[10];
-        System.out.println("Array size: " + options.length);
-        return options;
+    public List<ArrayList<String>> getSubjects() {
+        List<ArrayList<String>> list = new ArrayList<>();
+
+
+
+        list.add(wheel);
+
+
+        ArrayList wheel = new ArrayList();
+        wheel.add("wheel");
+        wheel.add("10");
+
+        return list;
+
     }
 
     public void testNlg(){
